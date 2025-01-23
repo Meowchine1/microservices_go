@@ -25,13 +25,3 @@
         3)записывает в базу данных delivery_service в таблицу Outbox сообщение о принятии заказа для доставки
         4)слушает очередь  "order_queue"  получает уведомление о заказе для доставки
         5)записывает в базу данных delivery_service в таблицу Inbox сообщение о доставке заказа
-
-
-DB SCRIPTS
-CREATE TABLE Inbox (
-    ID INT IDENTITY(1,1) PRIMARY KEY,       -- Автоматически увеличиваемый уникальный идентификатор
-    ServiceName NVARCHAR(255) NOT NULL,    -- Имя сервиса (строка, длина до 255 символов)
-    EventType NVARCHAR(255) NOT NULL,      -- Тип события (строка, длина до 255 символов)
-    Payload NVARCHAR(MAX) NOT NULL,        -- Поле для хранения данных события (JSON-объект или текст)
-    CreatedAt DATETIME2 NOT NULL           -- Временная метка события (в формате даты и времени)
-);
